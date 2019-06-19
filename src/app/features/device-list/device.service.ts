@@ -24,7 +24,7 @@ function _generateFakeEvent(): IEventTypes {
   return {
     type: _generateFakeFromEnum(EVENT_TYPE),
     severity: _generateFakeFromEnum(SERVERITY),
-    description: `unique event ${Math.floor(Math.random() * 1000)}`
+    description: `random event ${Math.floor(Math.random() * 1000)}`
   };
 }
 function  _generateFakeFromEnum(enumeration: any) {

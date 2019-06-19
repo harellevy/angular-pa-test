@@ -13,8 +13,6 @@ import * as DeviceActions from '../../actions/device-list.actions';
 })
 export class DeviceListComponent {
   devices: Observable<IDevice[]>;
-
-  // devices: IDevice[];
   constructor(
     private store: Store<AppState>,
     private deviceService: DeviceService
@@ -22,13 +20,11 @@ export class DeviceListComponent {
     this.devices = store.select('devices');
   }
   create(device: IDevice) {
+    // create 5 random events in events array
     const events = new Array(5).fill(0).map( () => DeviceService.createFakeEvent());
     const newDevice: IDevice = {...this.deviceService.addRandomDeviceStatus(device), ...{
         events: events
       }};
     this.store.dispatch(new DeviceActions.AddDevice(newDevice));
-    // this.deviceService.create();
-    // get after push, omit after ngrx
-    // this.getAllDevices();
   }
 }
