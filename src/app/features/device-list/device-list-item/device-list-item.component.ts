@@ -25,11 +25,11 @@ export class DeviceListItemComponent implements OnInit {
     });
   }
 
-  openDeviceModal(device, idx) {
+  openDeviceModal(idx) {
     const dialogRef = this.modalService.open(DeviceDetailsComponent, {
       width: '550px',
       panelClass: 'device-modal',
-      data: {device: device, idx: idx}
+      data: {idx: idx}
     });
 
     // if need to set something after modal closed

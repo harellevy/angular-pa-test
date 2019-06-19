@@ -21,7 +21,6 @@ export const IP_INPUT_VALUE_ACCESSOR: any = {
   `,
   styles: [`
     :host {
-      /*display: inline-block;*/
       vertical-align: middle;
     }
 

@@ -1,28 +1,28 @@
 <div class="dialog-content">
-  <div class="device-details text-center clearfix">
-    <div class="close-modal" (click)="closeModal()"></div>
+  <div class="close-modal" (click)="closeModal()"></div>
+  <div class="device-details text-center clearfix" *ngIf="device">
     <h2>Device details</h2>
     <div class="detail">
-      name: {{data.device.name}}
+      name: {{device.name}}
     </div>
     <div class="detail">
-      ip: {{data.device.ip}}
+      ip: {{device.ip}}
     </div>
     <div class="detail">
       status:
       <span class="badge badge-pill"
-            [class.badge-success]="data.device.status === 'active'"
-            [class.badge-warning]="data.device.status === 'inactive'"
-      >{{data.device.status}}</span>
+            [class.badge-success]="device.status === 'active'"
+            [class.badge-warning]="device.status === 'inactive'"
+      >{{device.status}}</span>
     </div>
     <div class="detail">
       type:
       <!-- maybe move later often used badges to their own component -->
       <span class="badge badge-pill"
-            [class.badge-dark]="data.device.type === 'mobile'"
-            [class.badge-secondary]="data.device.type === 'workstation'"
-            [class.badge-info]="data.device.type === 'server'"
-      >{{data.device.type}}</span>
+            [class.badge-dark]="device.type === 'mobile'"
+            [class.badge-secondary]="device.type === 'workstation'"
+            [class.badge-info]="device.type === 'server'"
+      >{{device.type}}</span>
     </div>
     <button class="btn btn-danger" (click)="delete()">Delete device</button>
   </div>
@@ -39,7 +39,7 @@
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let event of data.device.events; let idx = index">
+    <tr *ngFor="let event of device.events; let idx = index">
       <th scope="row">{{idx + 1}}</th>
       <td>{{event.description}}</td>
       <td>
