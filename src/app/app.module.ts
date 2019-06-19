@@ -11,7 +11,6 @@ import { reducer } from './reducers/device.reducer';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 
-    // StoreModule.forRoot(reducers, { metaReducers }),
 @NgModule({
   declarations: [
     AppComponent
