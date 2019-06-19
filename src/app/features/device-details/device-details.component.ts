@@ -1,0 +1,29 @@
+import { Component, Inject } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
+import { IDevice } from '../device-list/device.types';
+import { AppState } from '../../app.state';
+import { Store } from '@ngrx/store';
+import * as DeviceActions from '../../actions/device-list.actions';
+
+@Component({
+  selector: 'app-device-details',
+  templateUrl: './device-details.component.html',
+  styleUrls: ['./device-details.component.scss']
+})
+export class DeviceDetailsComponent {
+  constructor(
+    @Inject(MAT_DIALOG_DATA) public data: {device: IDevice, idx: number},
+    private dialogRef: MatDialogRef<DeviceDetailsComponent>,
+    private store: Store<AppState>
+  ) { }
+
+  delete() {
+    this.store.dispatch(new DeviceActions.RemoveDevice(this.data.idx));
+    this.closeModal();
+  }
+
+  closeModal() {
+    this.dialogRef.close();
+  }
+
+}

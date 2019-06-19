@@ -1,0 +1,26 @@
+<div class="device-item" *ngIf="device" (click)="openDeviceModal(device, idx)">
+  <div class="detail">
+    name: {{device.name}}
+  </div>
+  <div class="detail">
+    ip: {{device.ip}}
+  </div>
+  <div class="detail">
+    status:
+    <span class="badge badge-pill"
+          [class.badge-success]="device.status === 'active'"
+          [class.badge-warning]="device.status === 'inactive'"
+    >{{device.status}}</span>
+  </div>
+  <div class="detail">
+    type:
+    <span class="badge badge-pill"
+          [class.badge-dark]="device.type === 'mobile'"
+          [class.badge-secondary]="device.type === 'workstation'"
+          [class.badge-info]="device.type === 'server'"
+    >{{device.type}}</span>
+  </div>
+  <div class="events">
+    events: {{device.events.length}} events<br>
+  </div>
+</div>

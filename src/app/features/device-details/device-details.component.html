@@ -1,0 +1,61 @@
+<div class="dialog-content">
+  <div class="device-details text-center clearfix">
+    <div class="close-modal" (click)="closeModal()"></div>
+    <h2>Device details</h2>
+    <div class="detail">
+      name: {{data.device.name}}
+    </div>
+    <div class="detail">
+      ip: {{data.device.ip}}
+    </div>
+    <div class="detail">
+      status:
+      <span class="badge badge-pill"
+            [class.badge-success]="data.device.status === 'active'"
+            [class.badge-warning]="data.device.status === 'inactive'"
+      >{{data.device.status}}</span>
+    </div>
+    <div class="detail">
+      type:
+      <!-- maybe move later often used badges to their own component -->
+      <span class="badge badge-pill"
+            [class.badge-dark]="data.device.type === 'mobile'"
+            [class.badge-secondary]="data.device.type === 'workstation'"
+            [class.badge-info]="data.device.type === 'server'"
+      >{{data.device.type}}</span>
+    </div>
+    <button class="btn btn-danger" (click)="delete()">Delete device</button>
+  </div>
+</div>
+<h3 class="text-center bg-dark text-white mt-3 p-2">Device event list</h3>
+<div class="table-responsive-md">
+  <table class="table table-striped table-dark mb-0">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Description</th>
+      <th scope="col">Severity</th>
+      <th scope="col">Type</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let event of data.device.events; let idx = index">
+      <th scope="row">{{idx + 1}}</th>
+      <td>{{event.description}}</td>
+      <td>
+        <span class="badge badge-pill"
+              [class.badge-primary]="event.severity === 'high'"
+              [class.badge-light]="event.severity === 'medium'"
+              [class.badge-secondary]="event.severity === 'low'"
+        >{{event.severity}}</span>
+      </td>
+      <td>
+        <span class="badge badge-pill badge-success"
+              [class.badge-warning]="event.type === 'log'"
+              [class.badge-danger]="event.type === 'security'"
+        >{{event.type}}</span>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

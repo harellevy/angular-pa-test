@@ -1,0 +1,37 @@
+<div class="form-wrapper">
+  <form class="device-form d-inline-block d-md-flex" [formGroup]="deviceForm" (ngSubmit)="onSubmit()">
+    <div class="pl-3 pr-3 p-md-3 flex-md-grow-1">
+      <div class="form-input d-flex">
+        <label for="deviceName">
+          name:
+        </label>
+        <div class="input-wrapper flex-grow-1">
+          <input type="text" placeholder="Device name" id="deviceName" formControlName="name">
+        </div>
+      </div>
+    </div>
+    <div class="pl-3 pr-3 p-md-3">
+      <div class="form-input d-flex">
+        <label for="deviceName">
+          ip:
+        </label>
+        <div class="input-wrapper flex-grow-1">
+          <app-ip-input formControlName="ip"></app-ip-input>
+        </div>
+      </div>
+    </div>
+    <div class="pl-3 pr-3 p-md-0">
+      <mat-form-field>
+        <mat-label>Device type</mat-label>
+        <mat-select formControlName="type">
+          <mat-option *ngFor="let dType of deviceTypesKeys" [value]="deviceTypes[dType]">
+            {{deviceTypes[dType]}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="p-3 text-center">
+      <button mat-flat-button color="primary" [disabled]="!deviceForm.valid">Create device</button>
+    </div>
+  </form>
+</div>
