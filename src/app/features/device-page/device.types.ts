@@ -6,23 +6,23 @@ export enum DEVICE_TYPE {
   SERVER = 'server'
 }
 export enum DEVICE_STATUS {
-  // made in case there will be more statuses in future, could be boolean instead.
-  ACTIVE = 'active', // or true
-  INACTIVE = 'inactive', // or false
+  ACTIVE = 'active',
+  INACTIVE = 'inactive',
 }
 
-export interface ICreateDevice {
+export interface ICreateDeviceDto {
   ip: string;
   name: string;
   type: DEVICE_TYPE;
 }
 
 export interface IDevice {
+  id?: number;
   ip: string;
   name: string;
   type: DEVICE_TYPE;
   status: DEVICE_STATUS;
-  events?: IEventTypes[];
+  events: IEventTypes[];
 }
 export interface State {
   devices: IDevice[];

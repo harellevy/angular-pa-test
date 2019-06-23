@@ -1,5 +1,6 @@
-<div class="device-item" *ngIf="device" (click)="openDeviceModal(idx)">
+<div class="device-item" *ngIf="device" (click)="openDeviceModal()">
   <div class="detail">
+    id: {{device.id}}
     name: {{device.name}}
   </div>
   <div class="detail">

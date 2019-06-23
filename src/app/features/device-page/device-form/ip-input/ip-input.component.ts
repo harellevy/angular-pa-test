@@ -1,4 +1,4 @@
-import { Component, ElementRef, forwardRef, QueryList, ViewChildren } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, forwardRef, QueryList, ViewChildren } from '@angular/core';
 import { ControlValueAccessor, FormBuilder, FormGroup, NG_VALUE_ACCESSOR, Validators } from '@angular/forms';
 
 export const IP_INPUT_VALUE_ACCESSOR: any = {
@@ -10,6 +10,7 @@ export const IP_INPUT_VALUE_ACCESSOR: any = {
 @Component({
   selector: 'app-ip-input',
   providers: [IP_INPUT_VALUE_ACCESSOR],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <form [formGroup]="ipForm">
       <div class="input">
@@ -77,7 +78,8 @@ export class IpInputComponent implements ControlValueAccessor {
         // else if input is bigger than max
       } else if (parseInt(this.ipForm.value[ips], 10) > 255) {
         const ipSectionValue = this.ipForm.value[ips];
-        // push substring of length - 1 (i.e 256 will return 25, 2551 will return 255 etc.),
+        // push substring from start to length - 1
+        // (i.e 256 will return 25, move to next and change the value to 6, 2551 will return 255 etc.),
         // update next input, focus next input
         ip.push(ipSectionValue.substring(0, ipSectionValue.length - 1));
         this.ipForm.get(Object.keys(this.ipForm.value)[idx]).setValue(ipSectionValue.substring(0, ipSectionValue.length - 1));

@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { IDevice } from '../features/device-list/device.types';
+import { IDevice } from '../features/device-page/device.types';
 
 export const ADD_DEVICE       = '[DEVICE] Add';
 export const REMOVE_DEVICE    = '[DEVICE] Remove';

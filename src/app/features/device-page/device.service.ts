@@ -1,21 +1,25 @@
 import { Injectable } from '@angular/core';
-import { DEVICE_STATUS, IDevice } from './device.types';
+import { DEVICE_STATUS } from './device.types';
 import { EVENT_TYPE, IEventTypes, SERVERITY } from './event.types';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DeviceService {
+  private inc = 0;
   static createFakeEvent() {
     return _generateFakeEvent();
+  }
+  static generateRandomDeviceStatus(): {status: DEVICE_STATUS} {
+    // generate random status
+    return {status: _generateFakeFromEnum(DEVICE_STATUS)};
   }
   constructor() {
 
   }
 
-  addRandomDeviceStatus(device: IDevice): IDevice {
-    // generate random status
-    return {...device, ...{status: _generateFakeFromEnum(DEVICE_STATUS)}};
+  generateUniqueId(): number {
+    return this.inc++;
   }
 
 }

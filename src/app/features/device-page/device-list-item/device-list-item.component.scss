@@ -3,4 +3,9 @@
   box-shadow: 0 3px 19px -5px rgba(0, 0, 0, 0.1);
   padding: 20px;
   margin-bottom: 30px;
+  .detail {
+    line-height: 1.8;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 }

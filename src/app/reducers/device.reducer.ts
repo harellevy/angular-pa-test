@@ -1,5 +1,6 @@
 import * as DeviceActions from './../actions/device-list.actions';
-import { IDevice } from '../features/device-list/device.types';
+import * as ActiveDeviceActions from './../actions/active-device.actions';
+import { IDevice } from '../features/device-page/device.types';
 
 /**
  *
@@ -21,8 +22,20 @@ export function reducer(state: IDevice[] = [], action: DeviceActions.Actions) {
     case DeviceActions.ADD_DEVICE:
       return [...state, action.payload];
     case DeviceActions.REMOVE_DEVICE:
-      state.splice(action.payload, 1);
+      const index = state.findIndex(i => i.id === action.payload);
+      if (index !== -1) {
+        state.splice(index, 1);
+      }
+      return [...state];
+    default:
       return state;
+  }
+}
+
+export function activeDeviceReducer(state: IDevice = null, action: ActiveDeviceActions.Actions) {
+  switch (action.type) {
+    case ActiveDeviceActions.SET_DEVICE:
+      return action.payload;
     default:
       return state;
   }

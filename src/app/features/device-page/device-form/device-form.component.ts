@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { DEVICE_TYPE, IDevice } from '../device.types';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
@@ -7,7 +7,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   templateUrl: './device-form.component.html',
   styleUrls: ['./device-form.component.scss']
 })
-export class DeviceFormComponent implements OnInit {
+export class DeviceFormComponent {
   deviceForm: FormGroup;
   deviceTypes = DEVICE_TYPE;
   deviceTypesKeys = Object.keys(this.deviceTypes);
@@ -15,6 +15,9 @@ export class DeviceFormComponent implements OnInit {
 
   constructor(private fb: FormBuilder) {
     this.createForm();
+  }
+  trackByFn(index) {
+    return index;
   }
   createForm() {
     const ipRegex = new RegExp (['^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)',
@@ -33,9 +36,4 @@ export class DeviceFormComponent implements OnInit {
   onSubmit() {
     this.create.emit(this.deviceForm.value);
   }
-
-  ngOnInit() {
-  }
-
-
 }

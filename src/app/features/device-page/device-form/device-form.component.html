@@ -24,7 +24,7 @@
       <mat-form-field>
         <mat-label>Device type</mat-label>
         <mat-select formControlName="type">
-          <mat-option *ngFor="let dType of deviceTypesKeys" [value]="deviceTypes[dType]">
+          <mat-option *ngFor="let dType of deviceTypesKeys; trackBy: trackByFn;" [value]="deviceTypes[dType]">
             {{deviceTypes[dType]}}
           </mat-option>
         </mat-select>

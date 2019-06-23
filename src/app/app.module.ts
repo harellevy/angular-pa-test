@@ -5,9 +5,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { StoreModule } from '@ngrx/store';
 import { DeviceDetailsModule } from './features/device-details/device-details.module';
-import { DeviceListModule } from './features/device-list/device-list.module';
+import { DevicePageModule } from './features/device-page/device-page.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { reducer } from './reducers/device.reducer';
+import { activeDeviceReducer, reducer } from './reducers/device.reducer';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 
@@ -20,9 +20,10 @@ import { environment } from '../environments/environment';
     BrowserModule,
     AppRoutingModule,
     DeviceDetailsModule,
-    DeviceListModule,
+    DevicePageModule,
     StoreModule.forRoot({
-      devices: reducer
+      devices: reducer,
+      activeDevice: activeDeviceReducer
     }),
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states

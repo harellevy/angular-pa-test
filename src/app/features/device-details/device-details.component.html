@@ -39,7 +39,7 @@
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let event of device.events; let idx = index">
+    <tr *ngFor="let event of device.events; trackBy: trackByIdx; let idx = index">
       <th scope="row">{{idx + 1}}</th>
       <td>{{event.description}}</td>
       <td>

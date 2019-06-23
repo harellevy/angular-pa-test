@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { DeviceListComponent } from './features/device-list/device-list.component';
+import { DevicePageComponent } from './features/device-page/device-page.component';
 
 const routes: Routes = [
-  {path: '', component: DeviceListComponent},
+  {path: '', component: DevicePageComponent},
   {path: '**', redirectTo: ''}
 ];
 
