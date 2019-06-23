@@ -3,6 +3,7 @@
     buffer amount: {{scroll?.viewPortItems?.length}} of {{devices?.length}}
       <virtual-scroller class="virtual-scroller" #scroll
                         [bufferAmount]="30"
+                        [scrollDebounceTime]="20"
                         [enableUnequalChildrenSizes]="false"
                         [items]="devices"
       >
