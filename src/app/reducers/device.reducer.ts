@@ -21,6 +21,8 @@ export function reducer(state: IDevice[] = [], action: DeviceActions.Actions) {
   switch (action.type) {
     case DeviceActions.ADD_DEVICE:
       return [...state, action.payload];
+    case DeviceActions.ADD_MANY_DEVICES:
+      return [...state, ...action.payload];
     case DeviceActions.REMOVE_DEVICE:
       const index = state.findIndex(i => i.id === action.payload);
       if (index !== -1) {

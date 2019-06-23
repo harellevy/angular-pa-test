@@ -17,7 +17,12 @@ export class DevicePageComponent {
   ) {
   }
   create(device: ICreateDeviceDto): void {
-    const newDevice = this.deviceService.createDeviceObj(device);
-    this.store.dispatch(new DeviceActions.AddDevice(newDevice));
+    const many = [];
+    for (let i = 0; i < 10000; i++) {
+      const newDevice = this.deviceService.createDeviceObj(device);
+      many.push(newDevice);
+    }
+    console.log('got many results', many.length);
+    this.store.dispatch(new DeviceActions.AddManyDevices(many));
   }
 }

@@ -1,2 +1,28 @@
-.device-list {
+virtual-scroller {
+  height: calc(100vh - 106px);
+  max-height: calc(100vh - 106px);
+  margin: 0 -15px;
+}
+
+.inline {
+  display: inline-block;
+  max-width: 100%;
+  padding: 0 15px;
+}
+@media (min-width: 576px) {
+  .inline {
+    width: 33.3333333333%;
+  }
+}
+
+@media (min-width: 768px) {
+  .inline {
+    width: 25%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .inline {
+    width: 16.6666666667%;
+  }
 }

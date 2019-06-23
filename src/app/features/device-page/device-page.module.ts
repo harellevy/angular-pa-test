@@ -6,6 +6,7 @@ import { SharedModule } from '../shared/shared.module';
 import { IpInputComponent } from './device-form/ip-input/ip-input.component';
 import { DeviceListItemComponent } from './device-list-item/device-list-item.component';
 import { DevicePageComponent } from './device-page.component';
+import { VirtualScrollerModule } from 'ngx-virtual-scroller';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { DevicePageComponent } from './device-page.component';
     DeviceService
   ],
   imports: [
+    VirtualScrollerModule,
     SharedModule,
   ],
   exports: [

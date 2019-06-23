@@ -1,13 +1,15 @@
 <div class="container-fluid">
   <div class="device-list mt-3">
-    <div class="row">
-      <ng-container *ngFor="let device of devices$ | async; trackBy: trackByFn; let idx = index;">
-        <ng-container *ngIf="device">
-          <div class="col-12 col-sm-4 col-md-3 col-xl-2">
-            <app-device-list-item *ngIf="device" [device]="device"></app-device-list-item>
-          </div>
-        </ng-container>
-      </ng-container>
-    </div>
+    buffer amount: {{scroll?.viewPortItems?.length}} of {{devices?.length}}
+      <virtual-scroller class="virtual-scroller" #scroll
+                        [bufferAmount]="30"
+                        [enableUnequalChildrenSizes]="false"
+                        [items]="devices"
+      >
+        <div class="inline" *ngFor="let device of scroll.viewPortItems; trackBy: trackByFn">
+          <app-device-list-item [device]="device">
+          </app-device-list-item>
+        </div>
+      </virtual-scroller>
   </div>
 </div>
