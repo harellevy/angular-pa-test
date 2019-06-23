@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { DEVICE_STATUS } from './device.types';
+import { DEVICE_STATUS, ICreateDeviceDto, IDevice } from './device.types';
 import { EVENT_TYPE, IEventTypes, SERVERITY } from './event.types';
 
 @Injectable({
@@ -7,17 +7,21 @@ import { EVENT_TYPE, IEventTypes, SERVERITY } from './event.types';
 })
 export class DeviceService {
   private inc = 0;
-  static createFakeEvent() {
-    return _generateFakeEvent();
-  }
   constructor() {
 
   }
 
-  generateRandomDeviceStatus(): {status: DEVICE_STATUS} {
-    // generate random status
-    return {status: _generateFakeFromEnum(DEVICE_STATUS)};
+  createDeviceObj(device: ICreateDeviceDto): IDevice {
+    // create 5 random events in events array
+    const events = new Array(5).fill(0).map( () => _generateFakeEvent());
+    return {
+      ...device,
+      ...{id: this.generateUniqueId()},
+      ...{status: _generateFakeFromEnum(DEVICE_STATUS)},
+      ...{events: events}
+    };
   }
+
   generateUniqueId(): number {
     return this.inc++;
   }

@@ -17,7 +17,7 @@ export interface ICreateDeviceDto {
 }
 
 export interface IDevice {
-  id?: number;
+  id: number;
   ip: string;
   name: string;
   type: DEVICE_TYPE;
