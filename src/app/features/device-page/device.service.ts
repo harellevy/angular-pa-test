@@ -10,14 +10,14 @@ export class DeviceService {
   static createFakeEvent() {
     return _generateFakeEvent();
   }
-  static generateRandomDeviceStatus(): {status: DEVICE_STATUS} {
-    // generate random status
-    return {status: _generateFakeFromEnum(DEVICE_STATUS)};
-  }
   constructor() {
 
   }
 
+  generateRandomDeviceStatus(): {status: DEVICE_STATUS} {
+    // generate random status
+    return {status: _generateFakeFromEnum(DEVICE_STATUS)};
+  }
   generateUniqueId(): number {
     return this.inc++;
   }

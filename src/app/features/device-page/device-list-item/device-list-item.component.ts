@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { IDevice } from '../device.types';
 import { DeviceDetailsComponent } from '../../device-details/device-details.component';
 import { MatDialog } from '@angular/material';
@@ -12,19 +12,12 @@ import * as ActiveDeviceActions from '../../../actions/active-device.actions';
   styleUrls: ['./device-list-item.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class DeviceListItemComponent implements OnInit {
-  @Input() idx: number;
-  device: IDevice;
+export class DeviceListItemComponent {
+  @Input() device: IDevice;
   constructor(
     private modalService: MatDialog,
     private store: Store<AppState>
   ) {
-  }
-
-  ngOnInit(): void {
-    this.store.select('devices').subscribe((res) => {
-      this.device = res[this.idx];
-    });
   }
 
   openDeviceModal() {

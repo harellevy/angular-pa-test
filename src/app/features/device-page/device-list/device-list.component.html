@@ -1,12 +1,13 @@
-
-{{store.select('activeDevice') | async | json}}
 <div class="container-fluid">
   <div class="device-list mt-3">
     <div class="row">
-      <div class="col-12 col-sm-4 col-md-3 col-xl-2"
-           *ngFor="let device of devices$ | async; trackBy: trackByFn; let idx = index;">
-          <app-device-list-item [idx]="idx"></app-device-list-item>
-      </div>
+      <ng-container *ngFor="let device of devices$ | async; trackBy: trackByFn; let idx = index;">
+        <ng-container *ngIf="device">
+          <div class="col-12 col-sm-4 col-md-3 col-xl-2">
+            <app-device-list-item *ngIf="device" [device]="device"></app-device-list-item>
+          </div>
+        </ng-container>
+      </ng-container>
     </div>
   </div>
 </div>

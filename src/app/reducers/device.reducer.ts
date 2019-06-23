@@ -35,7 +35,7 @@ export function reducer(state: IDevice[] = [], action: DeviceActions.Actions) {
 export function activeDeviceReducer(state: IDevice = null, action: ActiveDeviceActions.Actions) {
   switch (action.type) {
     case ActiveDeviceActions.SET_DEVICE:
-      return action.payload;
+      return {...action.payload};
     default:
       return state;
   }
